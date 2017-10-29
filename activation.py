@@ -19,10 +19,18 @@ item = \
 
 # extract the activation url from the item for the desired asset
 item_activation_url = item.json()[asset_type]["_links"]["activate"]
-item_download_url = item.json()[asset_type]["location"]
 # request activation
 
 response = session.post(item_activation_url)
+
+if response.status_code == 204:
+    print "ACTIVATED"
+    item_download_url = item.json()[asset_type]["location"]
+    print item_download_url
+
+if response.status_code == 202:
+    print "WAITING"
+
 print response.status_code
 
-print item_download_url
+
