@@ -42,6 +42,6 @@ for i in range (0,300):
         break
 
     if response.status_code == 202:
-        print "WAITING"
-    time.sleep(1)
+        print "WAITING " + str(i * 5)
+    time.sleep(5)
 

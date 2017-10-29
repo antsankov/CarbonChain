@@ -12,10 +12,8 @@ The solution to this involves creating a level of trust and partnership between 
 
 ### Getting Satellite Imagery
 1. Use [geojson](http://geojson.io/#id=gist:anonymous/1d0efe01df5e1135e151ebb930d1379e&map=12/-0.5622/30.9924) to find the location you want.
-2. Take the coordinates, and replace them in `satellite/demo_filters.py`
-3. Run `python satellite/search_endpoint.py | jq` to get a list of candidate images, use `id`
-4. Activate the image you want by running `python activation.py 20160713_193337_1058018_RapidEye-3`
-5. Download the image from the link provided by `activation.py`
+1. Run `python satellite/search_endpoint.py areas/san_jose_new.json | jq` to get a list of candidate images, based on a geojson file. Use id to download it with the activator.
+1. Activate and download the image you want by running `python activation.py 20160713_193337_1058018_RapidEye-3`, it saves to the `results/` directory.
 
 ### Getting ndvi of satellite imagery
 Normalized Difference Vegetation Index (NDVI) is used to assess whether an area contains live green vegetation or not. It can show the difference between water and plants, bare soil and grass, whether plants are under stress, and what lifecycle stage a crop is in.
