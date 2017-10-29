@@ -1,3 +1,5 @@
+# based on https://www.planet.com/docs/guides/quickstart-ndvi/
+
 import datetime
 import rasterio
 import numpy

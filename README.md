@@ -12,13 +12,16 @@ The solution to this involves creating a level of trust and partnership between 
 
 ### Getting Satellite Imagery
 1. Use [geojson](http://geojson.io/#id=gist:anonymous/1d0efe01df5e1135e151ebb930d1379e&map=12/-0.5622/30.9924) to find the location you want.
-2. Take the coordinates, and replace them in `examples/demo_filters.py`
-3. Run `python examples/search_endpoint.py | jq` to get a list of candidate images, use `id`
+2. Take the coordinates, and replace them in `satellite/demo_filters.py`
+3. Run `python satellite/search_endpoint.py | jq` to get a list of candidate images, use `id`
 4. Activate the image you want by running `python activation.py 20160713_193337_1058018_RapidEye-3`
 5. Download the image from the link provided by `activation.py`
 
 ### Getting ndvi of satellite imagery
-1. Download image from PS. Make sure it's 4-band PlanetScope Scene
-1. Unzip it and move the *_AnalyticMS.tif as well as *_metadata.xml.
-1. Run `python extract_bands.py`. This will spit out an image locally with the NDVI color scheme. 
+Normalized Difference Vegetation Index (NDVI) is used to assess whether an area contains live green vegetation or not. It can show the difference between water and plants, bare soil and grass, whether plants are under stress, and what lifecycle stage a crop is in.
 
+It compares how much more near-infrared light is reflected by chlorophyll vs visible red light
+
+1. Download image from PS. Make sure it's 4-band PlanetScope Scene
+1. Unzip it and move the `..._AnalyticMS.tif` as well as `..._metadata.xml`.
+1. Run `python extract_bands.py` with the right xml and image file selected. This will spit out an image locally with the NDVI color scheme. 
