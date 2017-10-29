@@ -1,5 +1,4 @@
 # based on https://www.planet.com/docs/guides/quickstart-ndvi/
-
 import datetime
 import rasterio
 import numpy
@@ -11,12 +10,10 @@ xml_file ="./farm1/metadata.xml"
 
 xmldoc = minidom.parse(xml_file)
 nodes = xmldoc.getElementsByTagName("ps:bandSpecificMetadata")
-print nodes
 # XML parser refers to bands by numbers 1-4
 coeffs = {}
 for node in nodes:
     bn = node.getElementsByTagName("ps:bandNumber")[0].firstChild.data
-    print bn
     if bn in ['1', '2', '3', '4']:
         i = int(bn)
         value = node.getElementsByTagName("ps:reflectanceCoefficient")[0].firstChild.data
