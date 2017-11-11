@@ -51,11 +51,11 @@ def calculate_vegetation(strategy, image_file, xml_file):
     
     timestr = time.strftime("%Y%m%d-%H%M%S-")
     # Create the file
-    with rasterio.open(timestr + 'vegetation.tif', 'w', **kwargs) as dst:
+    with rasterio.open(timestr + strategy + '.tif', 'w', **kwargs) as dst:
         dst.write_band(1, vegetation.astype(rasterio.float32))
 
     # Select color pallatte:http://matplotlib.org/examples/color/colormaps_reference.html
-    plt.imsave(timestr+"vegetation-cmap.png", vegetation, cmap=plt.cm.binary)
+    plt.imsave(timestr + strategy + "-cmap.png", vegetation, cmap=plt.cm.binary)
     print("SUCCESSFULLY SAVED FILES")
 
 def main():
@@ -63,6 +63,6 @@ def main():
     xml_file ="./farm_jul/metadata.xml"
     
     calculate_vegetation("evi", image_file, xml_file)
-
+    calculate_vegetation("ndvi", image_file, xml_file)
 if __name__ == "__main__":
     main()
